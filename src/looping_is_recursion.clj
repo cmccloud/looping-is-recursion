@@ -55,5 +55,10 @@
                (inc count)))))
 
 (defn cut-at-repetition [a-seq]
-  [":("])
+  (loop [result [], prev #{}, remaining a-seq]
+    (cond (empty? remaining) result
+          (contains? prev (first remaining)) result
+          :else (recur (conj result (first remaining))
+                       (conj prev (first remaining))
+                       (rest remaining)))))
 
