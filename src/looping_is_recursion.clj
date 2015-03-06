@@ -28,7 +28,13 @@
           :else (recur (inc n) (rest value)))))
 
 (defn avg [a-seq]
-  -1)
+  (if (empty? a-seq) nil
+      (loop [total 0 count 0 values a-seq]
+        (if (empty? values)
+          (/ total count)
+          (recur (+ total (first values))
+                 (inc count)
+                 (rest values))))))
 
 (defn parity [a-seq]
   ":(")
