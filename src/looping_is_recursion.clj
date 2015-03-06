@@ -36,8 +36,16 @@
                  (inc count)
                  (rest values))))))
 
+(defn toggle [a-set elem]
+  (if (contains? a-set elem)
+    (disj a-set elem)
+    (conj a-set elem)))
+
 (defn parity [a-seq]
-  ":(")
+  (loop [s #{} values a-seq]
+    (if (empty? values) s
+      (recur (toggle s (first values))
+             (rest values)))))
 
 (defn fast-fibo [n]
   ":(")
