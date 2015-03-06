@@ -48,7 +48,11 @@
              (rest values)))))
 
 (defn fast-fibo [n]
-  ":(")
+  (loop [total 1 last 0 count 0]
+    (if (<= n count) last
+        (recur (+ total last)
+               total
+               (inc count)))))
 
 (defn cut-at-repetition [a-seq]
   [":("])
