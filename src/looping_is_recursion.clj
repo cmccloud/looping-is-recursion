@@ -14,7 +14,12 @@
         :else (recur (rest a-seq))))
 
 (defn seq= [seq1 seq2]
-  ":(")
+  (let [x (first seq1)
+        y (first seq2)]
+    (cond (empty? seq1) (empty? seq2)
+          (empty? seq2) (empty? seq1)
+          (= x y) (recur (rest seq1) (rest seq2))
+          :else false)))
 
 (defn find-first-index [pred a-seq]
   ":(")
