@@ -9,7 +9,9 @@
           :else (helper 1 0))))
 
 (defn last-element [a-seq]
-  ":(")
+  (cond (empty? a-seq) nil
+        (empty? (rest a-seq)) (first a-seq)
+        :else (recur (rest a-seq))))
 
 (defn seq= [seq1 seq2]
   ":(")
